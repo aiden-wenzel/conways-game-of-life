@@ -12,5 +12,5 @@ class Colony:
     def __calculate_columns__(self, screen_width: int) -> int:
         return screen_width / 16
 
-    def __initiate_bit_map__(self, columns: int, rows: int) -> :
-        
+    def __initiate_bit_map__(self, columns: int, rows: int) -> np.ndarray:
+        return np.zeros((columns, rows))
