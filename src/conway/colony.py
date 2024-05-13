@@ -1,4 +1,6 @@
-import cell
+import conway.cell as cell
+import numpy as np
+
 
 class Colony:
     def __init__(self, screen_width: int, screen_height: int):
@@ -12,10 +14,13 @@ class Colony:
     def __calculate_columns(self, screen_width: int) -> int:
         return int(screen_width / 16)
 
-    def __initiate_bit_map(self, columns: int, rows: int) -> list[cell.Cell]:
-        bit_map = []
+    def __initiate_bit_map(self, columns: int, rows: int) -> np.ndarray:
+        bit_map = np.zeros((rows, columns), dtype=cell.Cell)
         for i in range(rows):
             for j in range(columns):
                 bit_map[i][j] = cell.Cell(i, j)
 
         return bit_map
+
+    def get_cell(self, row: int, column: int) -> cell.Cell:
+        return self.bit_map[row][column]
