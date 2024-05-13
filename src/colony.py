@@ -24,3 +24,6 @@ class Colony:
 
     def get_cell(self, row: int, column: int) -> cell.Cell:
         return self.bit_map[row][column]
+
+    def resurect_cell_at(self, row: int, column: int) -> None:
+        self.get_cell(row, column).resurect_cell()

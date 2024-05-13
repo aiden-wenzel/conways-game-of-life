@@ -4,5 +4,8 @@ class Cell:
         self.row = row_in
         self.column = column_in
 
-    def get_is_alive(self):
+    def get_is_alive(self) -> bool:
         return self.is_alive
+
+    def resurect_cell(self) -> None:
+        self.is_alive = True
