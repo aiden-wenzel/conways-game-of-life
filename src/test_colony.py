@@ -1,5 +1,5 @@
 import pytest as pt
-import conway.colony as colony
+import colony
 
 
 def test_colony():

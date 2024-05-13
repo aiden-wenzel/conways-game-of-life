@@ -1,4 +1,4 @@
-import conway.cell as cell
+import cell
 import numpy as np
 
 
