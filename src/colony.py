@@ -38,8 +38,11 @@ class Colony:
     def find_num_alive_neighbors(self, row: int, column: int) -> int:
         count = 0
 
+        neighbor_matrix = np.array([])
         if row == 0 and column == 0:
-            pass
+            neighbor_matrix = self.bit_map[row:row+2, column:column+2]
+            neighbor_matrix = neighbor_matrix.flatten()
+            neighbor_matrix = np.delete(neighbor_matrix, 0)
 
         elif row == 0 and column == self.columns-1:
             pass
@@ -60,8 +63,9 @@ class Colony:
             neighbor_matrix = self.bit_map[row-1:row+2, column-1:column+2]
             neighbor_matrix = neighbor_matrix.flatten()
             neighbor_matrix = np.delete(neighbor_matrix, 4)
-            for tile in neighbor_matrix:
-                if tile.is_alive:
-                    count = count + 1
+
+        for tile in neighbor_matrix:
+            if tile.is_alive:
+                count = count + 1
 
         return count
