@@ -34,3 +34,34 @@ class Colony:
 
     def kill_cell_at(self, row: int, column: int) -> None:
         self.get_cell(row, column).kill_cell()
+
+    def find_num_alive_neighbors(self, row: int, column: int) -> int:
+        count = 0
+
+        if row == 0 and column == 0:
+            pass
+
+        elif row == 0 and column == self.columns-1:
+            pass
+
+        elif row == self.rows-1 and column == 0:
+            pass
+
+        elif row == self.rows-1 and column == self.columns-1:
+            pass
+
+        elif row == 0:
+            pass
+
+        elif column == 0:
+            pass
+
+        else:
+            neighboor_matrix = self.bit_map[row-1:row+2, column-1:column+2]
+            neighboor_matrix = neighboor_matrix.flatten()
+            neighboor_matrix = np.delete(neighboor_matrix, 4)
+            for tile in neighboor_matrix:
+                if tile.is_alive:
+                    count = count + 1
+
+        return count
