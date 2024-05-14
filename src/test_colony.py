@@ -21,7 +21,8 @@ def test_resurect():
 
     colony_1.resurect_cell_at(4, 5)
 
-    assert colony_1.get_cell(4, 5).get_is_alive
+    assert colony_1.get_cell(4, 5).get_is_alive()
+    assert colony_1.alive_cells == [(4, 5)]
 
 
 pt.main()
