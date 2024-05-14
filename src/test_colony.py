@@ -2,11 +2,9 @@ import pytest as pt
 import colony
 
 
-screen_width = 1280
-screen_height = 720
-
-
 def test_colony():
+    screen_width = 1280
+    screen_height = 720
     colony_1 = colony.Colony(screen_width, screen_height)
 
     for i in range(colony_1.rows):
@@ -17,6 +15,8 @@ def test_colony():
 
 
 def test_resurect():
+    screen_width = 1280
+    screen_height = 720
     colony_1 = colony.Colony(screen_width, screen_height)
 
     colony_1.resurect_cell_at(4, 5)
@@ -24,5 +24,29 @@ def test_resurect():
     assert colony_1.get_cell(4, 5).get_is_alive()
     assert colony_1.alive_cells == [(4, 5)]
 
+
+def test_boarder():
+    screen_width = 48
+    screen_height = 48
+    colony_1 = colony.Colony(screen_width, screen_height)
+
+    # check first row
+    for i in range(colony_1.rows):
+        assert colony_1.bit_map[0][i].is_boarder
+
+    # check last row
+    for i in range(colony_1.rows):
+        assert colony_1.bit_map[colony_1.rows-1][i].is_boarder
+
+    # check first column
+    for j in range(colony_1.columns):
+        assert colony_1.bit_map[j][0].is_boarder
+
+    # check last column
+    for j in range(colony_1.columns):
+        assert colony_1.bit_map[j][colony_1.columns-1].is_boarder
+
+    # check middle cell
+    assert not colony_1.bit_map[1][1].is_boarder
 
 pt.main()

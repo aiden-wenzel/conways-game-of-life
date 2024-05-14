@@ -20,6 +20,10 @@ class Colony:
         for i in range(rows):
             for j in range(columns):
                 bit_map[i][j] = cell.Cell(i, j)
+                if i == 0 or j == 0:
+                    bit_map[i][j].is_boarder = True
+                elif i == rows - 1 or j == columns - 1:
+                    bit_map[i][j].is_boarder = True
 
         return bit_map
 
