@@ -57,10 +57,10 @@ class Colony:
             pass
 
         else:
-            neighboor_matrix = self.bit_map[row-1:row+2, column-1:column+2]
-            neighboor_matrix = neighboor_matrix.flatten()
-            neighboor_matrix = np.delete(neighboor_matrix, 4)
-            for tile in neighboor_matrix:
+            neighbor_matrix = self.bit_map[row-1:row+2, column-1:column+2]
+            neighbor_matrix = neighbor_matrix.flatten()
+            neighbor_matrix = np.delete(neighbor_matrix, 4)
+            for tile in neighbor_matrix:
                 if tile.is_alive:
                     count = count + 1
 
