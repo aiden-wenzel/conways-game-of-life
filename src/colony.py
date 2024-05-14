@@ -7,7 +7,6 @@ class Colony:
         self.rows = self.__calculate_rows(screen_height)
         self.columns = self.__calculate_columns(screen_width)
         self.bit_map = self.__initiate_bit_map(self.rows, self.columns)
-        self.alive_cells = []
 
     def __calculate_rows(self, screen_height: int) -> int:
         return int(screen_height / 16)
@@ -32,4 +31,6 @@ class Colony:
 
     def resurect_cell_at(self, row: int, column: int) -> None:
         self.get_cell(row, column).resurect_cell()
-        self.alive_cells.append((row, column))
+
+    def kill_cell_at(self, row: int, column: int) -> None:
+        self.get_cell(row, column).kill_cell()

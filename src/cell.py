@@ -10,3 +10,6 @@ class Cell:
 
     def resurect_cell(self) -> None:
         self.is_alive = True
+
+    def kill_cell(self) -> None:
+        self.is_alive = False
