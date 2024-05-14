@@ -48,4 +48,15 @@ def test_boarder():
     # check middle cell
     assert not colony_1.bit_map[1][1].is_boarder
 
+def test_num_neighbors():
+    screen_width = 64
+    screen_height = 64
+    colony_1 = colony.Colony(screen_width, screen_height)
+
+    colony_1.resurect_cell_at(0, 2)
+    colony_1.resurect_cell_at(1, 1)
+    colony_1.resurect_cell_at(2, 0)
+
+    assert colony_1.find_num_alive_neighbors(1, 1) == 2
+
 pt.main()
