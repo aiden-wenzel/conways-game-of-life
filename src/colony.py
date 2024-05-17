@@ -37,15 +37,19 @@ class Colony:
 
     def find_num_alive_neighbors(self, row: int, column: int) -> int:
         count = 0
-
         neighbor_matrix = np.array([])
+
+        # top left
         if row == 0 and column == 0:
             neighbor_matrix = self.bit_map[row:row+2, column:column+2]
             neighbor_matrix = neighbor_matrix.flatten()
             neighbor_matrix = np.delete(neighbor_matrix, 0)
 
+        # top right
         elif row == 0 and column == self.columns-1:
-            pass
+            neighbor_matrix = self.bit_map[row:row+2, column-1:column+1]
+            neighbor_matrix = neighbor_matrix.flatten()
+            neighbor_matrix = np.delete(neighbor_matrix, 1)
 
         elif row == self.rows-1 and column == 0:
             pass
