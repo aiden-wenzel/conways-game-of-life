@@ -51,19 +51,41 @@ class Colony:
             neighbor_matrix = neighbor_matrix.flatten()
             neighbor_matrix = np.delete(neighbor_matrix, 1)
 
+        # bottom left
         elif row == self.rows-1 and column == 0:
             neighbor_matrix = self.bit_map[row-1:row+1, column:column+2]
             neighbor_matrix = neighbor_matrix.flatten()
             neighbor_matrix = np.delete(neighbor_matrix, 2)
 
+        # bottom right
         elif row == self.rows-1 and column == self.columns-1:
-            pass
+            neighbor_matrix = self.bit_map[row-1:row+1, column-1:column+1]
+            neighbor_matrix = neighbor_matrix.flatten()
+            neighbor_matrix = np.delete(neighbor_matrix, 3)
 
+        # top boarder
         elif row == 0:
-            pass
+            neighbor_matrix = self.bit_map[row:row+2, column-1:column+2]
+            neighbor_matrix = neighbor_matrix.flatten()
+            neighbor_matrix = np.delete(neighbor_matrix, 1)
 
+        # bottom boarder
+        elif row == self.rows-1:
+            neighbor_matrix = self.bit_map[row-1:row+1, column-1:column+2]
+            neighbor_matrix = neighbor_matrix.flatten()
+            neighbor_matrix = np.delete(neighbor_matrix, 4)
+
+        # left boarder
         elif column == 0:
-            pass
+            neighbor_matrix = self.bit_map[row-1:row+2, column:column+2]
+            neighbor_matrix = neighbor_matrix.flatten()
+            neighbor_matrix = np.delete(neighbor_matrix, 2)
+
+        # right boarder
+        elif column == self.columns-1:
+            neighbor_matrix = self.bit_map[row-1:row+2, column-1:column+1]
+            neighbor_matrix = neighbor_matrix.flatten()
+            neighbor_matrix = np.delete(neighbor_matrix, 3)
 
         else:
             neighbor_matrix = self.bit_map[row-1:row+2, column-1:column+2]
