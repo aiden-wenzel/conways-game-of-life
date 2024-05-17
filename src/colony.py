@@ -52,7 +52,9 @@ class Colony:
             neighbor_matrix = np.delete(neighbor_matrix, 1)
 
         elif row == self.rows-1 and column == 0:
-            pass
+            neighbor_matrix = self.bit_map[row-1:row+1, column:column+2]
+            neighbor_matrix = neighbor_matrix.flatten()
+            neighbor_matrix = np.delete(neighbor_matrix, 2)
 
         elif row == self.rows-1 and column == self.columns-1:
             pass
