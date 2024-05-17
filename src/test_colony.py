@@ -83,4 +83,13 @@ def test_num_neighbors_corner_2():
 
     assert colony_1.find_num_alive_neighbors(0, 3) == 2
 
+def test_num_heighbors_corner_3():
+    screen_width = 64
+    screen_height = 64
+    colony_1 = colony.Colony(screen_width, screen_height)
+
+    colony_1.resurect_cell_at(2, 0)
+    colony_1.resurect_cell_at(3, 2)
+
+    assert colony_1.find_num_alive_neighbors(3, 0) == 1
 pt.main()
