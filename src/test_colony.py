@@ -61,7 +61,7 @@ def test_num_neighbors():
     assert colony_1.find_num_alive_neighbors(1, 1) == 2
 
 
-def test_num_neightbors_corner_1():
+def test_num_neighbors_corner_1():
     screen_width = 64
     screen_height = 64
     colony_1 = colony.Colony(screen_width, screen_height)
@@ -71,5 +71,16 @@ def test_num_neightbors_corner_1():
 
     assert colony_1.find_num_alive_neighbors(0, 0) == 1
 
+
+def test_num_neighbors_corner_2():
+    screen_width = 64
+    screen_height = 64
+    colony_1 = colony.Colony(screen_width, screen_height)
+
+    colony_1.resurect_cell_at(0, 3)
+    colony_1.resurect_cell_at(0, 2)
+    colony_1.resurect_cell_at(1, 3)
+
+    assert colony_1.find_num_alive_neighbors(0, 3) == 2
 
 pt.main()
