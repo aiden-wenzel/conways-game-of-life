@@ -7,8 +7,8 @@ class Colony:
         self.rows = self.__calculate_rows(screen_height)
         self.columns = self.__calculate_columns(screen_width)
         self.bit_map = self.__initiate_bit_map(self.rows, self.columns)
-        self.cells_to_die = np.array([])
-        self.cells_to_resurect = np.array([])
+        self.cells_to_die = []
+        self.cells_to_resurect = []
 
     def __calculate_rows(self, screen_height: int) -> int:
         return int(screen_height / 16)
@@ -104,8 +104,7 @@ class Colony:
         num_alive_neighbors = self.find_num_alive_neighbors(row, column)
 
         if num_alive_neighbors < 2 or num_alive_neighbors > 3:
-            self.cells_to_die = np.append(self.cells_to_die, (row, column))
+            self.cells_to_die.append((row, column))
 
         elif num_alive_neighbors == 3:
-            self.cells_to_resurect = np.append(self.cells_to_resurect, (row, column))
-
+            self.cells_to_resurect.append((row, column))
