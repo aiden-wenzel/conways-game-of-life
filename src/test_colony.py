@@ -1,11 +1,13 @@
 import pytest as pt
+import numpy as np
 import colony
 
 
 def test_colony():
     screen_width = 1280
     screen_height = 720
-    colony_1 = colony.Colony(screen_width, screen_height)
+    bit_map = np.zeros((45, 80))
+    colony_1 = colony.Colony(screen_width, screen_height, bit_map)
 
     for i in range(colony_1.rows):
         for j in range(colony_1.columns):
