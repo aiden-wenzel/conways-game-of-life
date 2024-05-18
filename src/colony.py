@@ -120,3 +120,10 @@ class Colony:
         for row in range(self.rows):
             for column in range(self.columns):
                 self.determine_fate(row, column)
+
+    def kill_and_resurect_cells(self) -> None:
+        for coordinate in self.cells_to_die:
+            self.kill_cell_at(coordinate[0], coordinate[1])
+
+        for coordinate in self.cells_to_resurect:
+            self.resurect_cell_at(coordinate[0], coordinate[1])
