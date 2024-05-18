@@ -150,4 +150,24 @@ def test_determine_fate():
     assert colony_1.cells_to_resurect == [(1, 1)]
 
 
+def test_determine_fate_bit_map():
+    screen_width = 48
+    screen_height = 48
+    bit_map = np.array([
+        [1, 0, 0],
+        [1, 0, 0],
+        [0, 1, 0]
+        ])
+
+    colony_1 = colony.Colony(screen_width, screen_height, bit_map)
+
+    colony_1.bit_map_determine_fate()
+
+    cells_to_die_correct = [(0, 0), (0, 2), (1, 2), (2, 1), (2, 2)]
+    cells_to_resurect_correct = [(1, 1)]
+
+    assert colony_1.cells_to_die == cells_to_die_correct
+    assert colony_1.cells_to_resurect == cells_to_resurect_correct
+
+
 pt.main()
