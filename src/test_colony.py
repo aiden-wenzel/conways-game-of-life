@@ -87,10 +87,13 @@ def test_num_neighbors_corner_2():
 def test_num_neighbors_corner_3():
     screen_width = 64
     screen_height = 64
-    colony_1 = colony.Colony(screen_width, screen_height)
-
-    colony_1.resurect_cell_at(2, 0)
-    colony_1.resurect_cell_at(3, 2)
+    bit_map = np.array([
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [1, 0, 0, 0],
+        [0, 0, 1, 0]
+        ])
+    colony_1 = colony.Colony(screen_width, screen_height, bit_map)
 
     assert colony_1.find_num_alive_neighbors(3, 0) == 1
 
@@ -98,11 +101,13 @@ def test_num_neighbors_corner_3():
 def test_num_neighbors_corner_4():
     screen_width = 64
     screen_height = 64
-    colony_1 = colony.Colony(screen_width, screen_height)
-
-    colony_1.resurect_cell_at(3, 3)
-    colony_1.resurect_cell_at(2, 2)
-    colony_1.resurect_cell_at(2, 3)
+    bit_map = np.array([
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 1, 1],
+        [0, 0, 0, 1]
+        ])
+    colony_1 = colony.Colony(screen_width, screen_height, bit_map)
 
     assert colony_1.find_num_alive_neighbors(3, 3) == 2
 
