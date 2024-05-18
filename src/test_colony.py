@@ -129,6 +129,7 @@ def test_edges():
     assert colony_1.find_num_alive_neighbors(4, 2) == 3
     assert colony_1.find_num_alive_neighbors(3, 4) == 2
 
+
 def test_determine_fate():
     screen_width = 80
     screen_height = 80
@@ -147,4 +148,6 @@ def test_determine_fate():
 
     assert colony_1.cells_to_die == [(0, 4), (4, 4)]
     assert colony_1.cells_to_resurect == [(1, 1)]
+
+
 pt.main()
