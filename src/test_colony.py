@@ -19,7 +19,8 @@ def test_colony():
 def test_boarder():
     screen_width = 48
     screen_height = 48
-    colony_1 = colony.Colony(screen_width, screen_height)
+    bit_map = np.zeros((3, 3))
+    colony_1 = colony.Colony(screen_width, screen_height, bit_map)
 
     # check first row
     for i in range(colony_1.rows):
