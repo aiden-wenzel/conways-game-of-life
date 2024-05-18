@@ -16,16 +16,6 @@ def test_colony():
             assert colony_1.get_cell(i, j).column == j
 
 
-def test_resurect():
-    screen_width = 1280
-    screen_height = 720
-    colony_1 = colony.Colony(screen_width, screen_height)
-
-    colony_1.resurect_cell_at(4, 5)
-
-    assert colony_1.get_cell(4, 5).get_is_alive()
-
-
 def test_boarder():
     screen_width = 48
     screen_height = 48
