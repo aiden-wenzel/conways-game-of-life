@@ -45,7 +45,13 @@ def test_boarder():
 def test_num_neighbors():
     screen_width = 64
     screen_height = 64
-    colony_1 = colony.Colony(screen_width, screen_height)
+    bit_map = np.array([
+            [0, 0, 1, 0],
+            [0, 1, 0, 0],
+            [1, 0, 0, 0],
+            [0, 0, 0, 0]
+               ])
+    colony_1 = colony.Colony(screen_width, screen_height, bit_map)
 
     colony_1.resurect_cell_at(0, 2)
     colony_1.resurect_cell_at(1, 1)
