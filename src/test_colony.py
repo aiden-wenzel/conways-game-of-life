@@ -189,7 +189,8 @@ def test_generation():
         [1, 0, 1, 1],
         ])
 
-    colony_1 = colony.Colony(screen_width, screen_height, bit_map)
+    colony_1 = colony.Colony(screen_width, screen_height)
+    colony_1.initiate_live_cells(bit_map)
     colony_1.bit_map_determine_fate()
     colony_1.kill_and_resurect_cells()
 
