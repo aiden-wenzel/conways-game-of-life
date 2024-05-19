@@ -127,3 +127,12 @@ class Colony:
 
         for coordinate in self.cells_to_resurect:
             self.resurect_cell_at(coordinate[0], coordinate[1])
+
+    def get_bool_bit_map(self) -> np.ndarray:
+        bool_bit_map = np.zeros((self.rows, self.columns))
+        for row in range(self.rows):
+            for column in range(self.columns):
+                if self.bit_map[row][column].is_alive:
+                    bool_bit_map[row][column] = 1
+
+        return bool_bit_map
