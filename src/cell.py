@@ -4,6 +4,7 @@ class Cell:
         self.is_boarder = False
         self.row = row_in
         self.column = column_in
+        self.screen_coordinates = self.calculate_screen_coordinates()
 
     def get_is_alive(self) -> bool:
         return self.is_alive
@@ -13,3 +14,6 @@ class Cell:
 
     def kill_cell(self) -> None:
         self.is_alive = False
+
+    def calculate_screen_coordinates(self) -> tuple:
+        return (self.column*16, self.row*16)
