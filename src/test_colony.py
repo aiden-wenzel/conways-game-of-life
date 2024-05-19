@@ -7,7 +7,8 @@ def test_colony():
     screen_width = 1280
     screen_height = 720
     bit_map = np.zeros((45, 80))
-    colony_1 = colony.Colony(screen_width, screen_height, bit_map)
+    colony_1 = colony.Colony(screen_width, screen_height)
+    colony_1.initiate_live_cells(bit_map)
 
     for i in range(colony_1.rows):
         for j in range(colony_1.columns):
@@ -20,7 +21,8 @@ def test_boarder():
     screen_width = 48
     screen_height = 48
     bit_map = np.zeros((3, 3))
-    colony_1 = colony.Colony(screen_width, screen_height, bit_map)
+    colony_1 = colony.Colony(screen_width, screen_height)
+    colony_1.initiate_live_cells(bit_map)
 
     # check first row
     for i in range(colony_1.rows):
@@ -51,7 +53,8 @@ def test_num_neighbors():
             [1, 0, 0, 0],
             [0, 0, 0, 0]])
 
-    colony_1 = colony.Colony(screen_width, screen_height, bit_map)
+    colony_1 = colony.Colony(screen_width, screen_height)
+    colony_1.initiate_live_cells(bit_map)
 
     assert colony_1.find_num_alive_neighbors(1, 1) == 2
 
@@ -65,7 +68,8 @@ def test_num_neighbors_corner_1():
         [1, 0, 0, 0],
         [0, 0, 0, 0]])
 
-    colony_1 = colony.Colony(screen_width, screen_height, bit_map)
+    colony_1 = colony.Colony(screen_width, screen_height)
+    colony_1.initiate_live_cells(bit_map)
 
     assert colony_1.find_num_alive_neighbors(0, 0) == 1
 
@@ -79,7 +83,8 @@ def test_num_neighbors_corner_2():
         [0, 0, 0, 0],
         [0, 0, 0, 0]
         ])
-    colony_1 = colony.Colony(screen_width, screen_height, bit_map)
+    colony_1 = colony.Colony(screen_width, screen_height)
+    colony_1.initiate_live_cells(bit_map)
 
     assert colony_1.find_num_alive_neighbors(0, 3) == 2
 
@@ -93,7 +98,8 @@ def test_num_neighbors_corner_3():
         [1, 0, 0, 0],
         [0, 0, 1, 0]
         ])
-    colony_1 = colony.Colony(screen_width, screen_height, bit_map)
+    colony_1 = colony.Colony(screen_width, screen_height)
+    colony_1.initiate_live_cells(bit_map)
 
     assert colony_1.find_num_alive_neighbors(3, 0) == 1
 
@@ -107,7 +113,8 @@ def test_num_neighbors_corner_4():
         [0, 0, 1, 1],
         [0, 0, 0, 1]
         ])
-    colony_1 = colony.Colony(screen_width, screen_height, bit_map)
+    colony_1 = colony.Colony(screen_width, screen_height)
+    colony_1.initiate_live_cells(bit_map)
 
     assert colony_1.find_num_alive_neighbors(3, 3) == 2
 
@@ -122,7 +129,8 @@ def test_edges():
         [0, 1, 0, 1, 0],
         [0, 1, 0, 0, 0]
         ])
-    colony_1 = colony.Colony(screen_width, screen_height, bit_map)
+    colony_1 = colony.Colony(screen_width, screen_height)
+    colony_1.initiate_live_cells(bit_map)
 
     assert colony_1.find_num_alive_neighbors(0, 1) == 3
     assert colony_1.find_num_alive_neighbors(2, 0) == 2
@@ -140,7 +148,8 @@ def test_determine_fate():
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0],
         ])
-    colony_1 = colony.Colony(screen_width, screen_height, bit_map)
+    colony_1 = colony.Colony(screen_width, screen_height)
+    colony_1.initiate_live_cells(bit_map)
 
     colony_1.determine_fate(1, 1)
     colony_1.determine_fate(0, 4)
@@ -159,7 +168,8 @@ def test_determine_fate_bit_map():
         [0, 1, 0]
         ])
 
-    colony_1 = colony.Colony(screen_width, screen_height, bit_map)
+    colony_1 = colony.Colony(screen_width, screen_height)
+    colony_1.initiate_live_cells(bit_map)
 
     colony_1.bit_map_determine_fate()
 

@@ -3,11 +3,10 @@ import numpy as np
 
 
 class Colony:
-    def __init__(self, screen_width: int, screen_height: int, bit_map: np.ndarray):
+    def __init__(self, screen_width: int, screen_height: int):
         self.rows = self.__calculate_rows(screen_height)
         self.columns = self.__calculate_columns(screen_width)
         self.bit_map = self.__initiate_bit_map(self.rows, self.columns)
-        self.__initiate_live_cells(bit_map)
         self.cells_to_die = []
         self.cells_to_resurect = []
 
@@ -29,7 +28,7 @@ class Colony:
 
         return bit_map
 
-    def __initiate_live_cells(self, bit_map: np.ndarray) -> None:
+    def initiate_live_cells(self, bit_map: np.ndarray) -> None:
         for row in range(self.rows):
             for column in range(self.columns):
                 if bit_map[row][column] == 1:
