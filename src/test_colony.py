@@ -169,5 +169,26 @@ def test_determine_fate_bit_map():
     assert colony_1.cells_to_die == cells_to_die_correct
     assert colony_1.cells_to_resurect == cells_to_resurect_correct
 
+def test_generation():
+    screen_width = 64
+    screen_height = 64
+    bit_map = np.array([
+        [1, 0, 1, 0],
+        [0, 1, 0, 0],
+        [0, 0, 1, 1],
+        [1, 0, 1, 1],
+        ])
 
+    colony_1 = colony.Colony(screen_width, screen_height, bit_map)
+    colony_1.bit_map_determine_fate()
+    colony_1.kill_and_resurect_cells()
+
+    tick_1_correct = np.array([
+        [0, 1, 0, 0],
+        [0, 1, 0, 1],
+        [0, 0, 0, 1],
+        [0, 1, 1, 1],
+        ])
+
+    assert (colony_1.get_bool_bit_map() == tick_1_correct).all()
 pt.main()
