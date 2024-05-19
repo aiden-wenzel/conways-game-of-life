@@ -117,6 +117,8 @@ class Colony:
             self.cells_to_resurect.append((row, column))
 
     def bit_map_determine_fate(self) -> None:
+        self.cells_to_resurect = []
+        self.cells_to_die = []
         for row in range(self.rows):
             for column in range(self.columns):
                 self.determine_fate(row, column)

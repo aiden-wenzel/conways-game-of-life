@@ -191,4 +191,17 @@ def test_generation():
         ])
 
     assert (colony_1.get_bool_bit_map() == tick_1_correct).all()
+
+    colony_1.bit_map_determine_fate()
+    colony_1.kill_and_resurect_cells()
+
+    tick_2_correct = np.array([
+        [0, 0, 1, 0],
+        [0, 0, 0, 0],
+        [0, 1, 0, 1],
+        [0, 0, 1, 1],
+        ])
+
+    assert (colony_1.get_bool_bit_map() == tick_2_correct).all()
+
 pt.main()
