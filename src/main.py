@@ -32,16 +32,16 @@ class Game:
                 if event.type == pg.QUIT:
                     self.running = False
 
-                self.draw_colony()
-                pg.display.flip() 
+            self.draw_colony()
+            pg.display.flip() 
 
-                self.colony.bit_map_determine_fate()
-                self.colony.kill_and_resurect_cells()
+            self.colony.bit_map_determine_fate()
+            self.colony.kill_and_resurect_cells()        
 
             self.clock.tick(self.frame_rate)
         
         pg.quit()
 
 
-game_of_life = Game((1280, 720), 1)
+game_of_life = Game((1280, 720), 10)
 game_of_life.main()
