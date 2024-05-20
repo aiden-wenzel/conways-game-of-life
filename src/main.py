@@ -1,4 +1,5 @@
 import pygame as pg
+import utils
 import colony
 
 
@@ -10,6 +11,7 @@ class Game:
         self.running = True 
         self.frame_rate = frame_rate
         self.colony = colony.Colony(resolution[0], resolution[1])
+        self.colony.initiate_live_cells(utils.read_pattern("../patterns/blinker.csv"))
 
     def draw_colony(self) -> None:
         for row in range(self.colony.rows):
