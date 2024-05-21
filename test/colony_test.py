@@ -1,7 +1,11 @@
 import pytest as pt
 import numpy as np
+import sys
+
+sys.path.append("../src/")
 import colony
 
+print(sys.path)
 
 def test_colony():
     screen_width = 1280
