@@ -11,12 +11,21 @@ class Colony:
         self.cells_to_resurect = []
 
     def __calculate_rows(self, screen_height: int) -> int:
+        """Calculate the row given the inputed screen height."""
+
         return int(screen_height / 16)
 
     def __calculate_columns(self, screen_width: int) -> int:
+        """Calculate the column given the inputed screen width."""
+
         return int(screen_width / 16)
 
     def __initiate_bit_map(self, rows: int, columns: int) -> np.ndarray:
+        """
+        Return a matrix of dead cells where the boarder cells have their is_boarder
+        atribute set to true.
+        """
+
         bit_map = np.zeros((rows, columns), dtype=cell.Cell)
         for i in range(rows):
             for j in range(columns):
@@ -29,21 +38,41 @@ class Colony:
         return bit_map
 
     def initiate_live_cells(self, bit_map: np.ndarray) -> None:
+        """
+        Initialize cells in the colony based on bit_map which is a matrix of 1's and 0's.
+        """
+
         for row in range(self.rows):
             for column in range(self.columns):
                 if bit_map[row][column] == 1:
                     self.resurect_cell_at(row, column)
 
     def get_cell(self, row: int, column: int) -> cell.Cell:
+        """
+        Return the cell at inputed row and column.
+        """
+
         return self.bit_map[row][column]
 
     def resurect_cell_at(self, row: int, column: int) -> None:
+        """
+        Set the cell at row and column to be alive.
+        """
+
         self.get_cell(row, column).resurect_cell()
 
     def kill_cell_at(self, row: int, column: int) -> None:
+        """
+        Set the cell at row and column to be dead.
+        """
+
         self.get_cell(row, column).kill_cell()
 
     def find_num_alive_neighbors(self, row: int, column: int) -> int:
+        """
+        Return the number of alive neighbors for cell at row and column.
+        """
+
         count = 0
         neighbor_matrix = np.array([])
 
@@ -107,6 +136,11 @@ class Colony:
         return count
 
     def determine_fate(self, row: int, column: int) -> None:
+        """
+        Append the a row column tuple to either the list of cells to die 
+        or cells to live based on the rule of Conway's game of Life.
+        """
+
         num_alive_neighbors = self.find_num_alive_neighbors(row, column)
 
         if num_alive_neighbors < 2 or num_alive_neighbors > 3:
@@ -116,6 +150,11 @@ class Colony:
             self.cells_to_resurect.append((row, column))
 
     def bit_map_determine_fate(self) -> None:
+        """
+        Refresh the lists containing the cells to die and resurect.
+        Determine the fate of every cell in the colony.
+        """
+
         self.cells_to_resurect = []
         self.cells_to_die = []
         for row in range(self.rows):
@@ -123,6 +162,11 @@ class Colony:
                 self.determine_fate(row, column)
 
     def kill_and_resurect_cells(self) -> None:
+        """
+        Kill all cells in the list of cells to die.
+        Resurect all cells in the list of cells to resurect.
+        """
+
         for coordinate in self.cells_to_die:
             self.kill_cell_at(coordinate[0], coordinate[1])
 
@@ -130,6 +174,10 @@ class Colony:
             self.resurect_cell_at(coordinate[0], coordinate[1])
 
     def get_bool_bit_map(self) -> np.ndarray:
+        """
+        Return a matrix of 1's and 0's based on the current state of the colony.
+        """
+
         bool_bit_map = np.zeros((self.rows, self.columns))
         for row in range(self.rows):
             for column in range(self.columns):
