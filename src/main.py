@@ -1,7 +1,12 @@
 import pygame as pg
+import pygame_gui as gui
+import logging as log
 import utils
 import colony
 
+
+logger = log.getLogger(__name__)
+logger.setLevel(log.DEBUG)
 
 class Game:
     def __init__(self, resolution: tuple, frame_rate: int) -> None:
@@ -25,6 +30,11 @@ class Game:
                 pg.draw.rect(self.screen, color, pg.Rect(self.colony.get_cell(row, column).calculate_screen_coordinates(), (16, 16)))
 
     def main(self) -> None:
+        logger.debug("Entering main")
+
+        in_gui = True
+        in_game = False
+
         self.screen.fill("purple")
 
         while self.running:
@@ -32,14 +42,21 @@ class Game:
                 if event.type == pg.QUIT:
                     self.running = False
 
-            self.draw_colony()
-            pg.display.flip() 
+            if in_gui:
+                self.screen.fill("red")
+                pg.display.flip()
 
-            self.colony.bit_map_determine_fate()
-            self.colony.kill_and_resurect_cells()        
+            elif in_game:
+
+                self.draw_colony()
+                pg.display.flip() 
+
+                self.colony.bit_map_determine_fate()
+                self.colony.kill_and_resurect_cells()        
+
+       
 
             self.clock.tick(self.frame_rate)
-        
         pg.quit()
 
 
