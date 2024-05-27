@@ -1,5 +1,4 @@
 import pygame as pg
-import pygame_gui as gui
 import logging as log
 import utils
 import colony
