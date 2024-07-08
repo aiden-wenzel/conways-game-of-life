@@ -42,8 +42,15 @@ class Game:
                     self.running = False
 
             if in_gui:
-                self.screen.fill("red")
+                self.draw_colony()
+                mouse_pos = pg.mouse.get_pos()
+                mouse_row = int(mouse_pos[0]/16)
+                mouse_column = int(mouse_pos[1]/16)
+                selected_cell = self.colony.get_cell(mouse_column, mouse_row)
+                
+                selected_cell.resurect_cell()
                 pg.display.flip()
+
 
             elif in_game:
 
