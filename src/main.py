@@ -16,6 +16,7 @@ class Game:
         self.frame_rate = frame_rate
         self.colony = colony.Colony(resolution[0], resolution[1])
         self.colony.initiate_live_cells(utils.read_pattern("../patterns/alef.csv"))
+        self.selected_cell = None
 
     def draw_colony(self) -> None:
         for row in range(self.colony.rows):
@@ -23,6 +24,8 @@ class Game:
                 color = ""
                 if self.colony.get_cell(row, column).is_alive:
                     color = "black"
+                elif self.colony.get_cell(row, column) == self.selected_cell:
+                    color = "grey"
                 else:
                     color = "white"
                 
@@ -46,10 +49,10 @@ class Game:
                 mouse_pos = pg.mouse.get_pos()
                 mouse_row = int(mouse_pos[0]/16)
                 mouse_column = int(mouse_pos[1]/16)
-                selected_cell = self.colony.get_cell(mouse_column, mouse_row)
+                self.selected_cell = self.colony.get_cell(mouse_column, mouse_row)
                 
-                selected_cell.resurect_cell()
                 pg.display.flip()
+                
 
 
             elif in_game:

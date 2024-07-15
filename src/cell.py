@@ -5,6 +5,7 @@ class Cell:
 
 
         self.is_alive = False
+        self.is_highlighted = False
         self.is_boarder = False
         self.row = row_in
         self.column = column_in
@@ -19,6 +20,11 @@ class Cell:
         """Change the cell to be alive."""
 
         self.is_alive = True
+
+    def highlight_cell(self) -> None:
+        """Change the cell to be highlighted while in GUI"""
+
+        self.is_highlighted = True
 
     def kill_cell(self) -> None:
         """Change the cell to be dead."""
