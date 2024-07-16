@@ -50,7 +50,13 @@ class Game:
                 mouse_row = int(mouse_pos[0]/16)
                 mouse_column = int(mouse_pos[1]/16)
                 self.selected_cell = self.colony.get_cell(mouse_column, mouse_row)
-                
+
+                mouse_clicked = pg.mouse.get_pressed()
+                left_clicked = mouse_clicked[0]
+
+                if left_clicked:
+                    self.selected_cell.resurect_cell()
+
                 pg.display.flip()
                 
 
