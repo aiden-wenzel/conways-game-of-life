@@ -185,3 +185,12 @@ class Colony:
                     bool_bit_map[row][column] = 1
 
         return bool_bit_map
+
+    def wipe_colony(self) -> None:
+        """
+        Set all the cells in the colony to dead
+        """
+
+        for row in range(self.rows):
+            for column in range(self.columns):
+                self.get_cell(row, column).kill_cell()
