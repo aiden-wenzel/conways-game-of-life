@@ -62,8 +62,8 @@ class Game:
 
             if in_gui:
                 self.draw_colony()
-                self._draw_button((0, 0), (50, 25), "red")
-                self._draw_button((1280-50, 720-25), (50, 25), "green")
+                self._draw_button((0, 0), (50, 25), "green")
+                self._draw_button((1280-50, 0), (50, 25), "red")
                 mouse_pos = pg.mouse.get_pos()
                 mouse_row = int(mouse_pos[0]/16)
                 mouse_column = int(mouse_pos[1]/16)
@@ -87,12 +87,12 @@ class Game:
             elif in_game:
                 mouse_pos = pg.mouse.get_pos()
                 self.draw_colony()
-                self._draw_button((0, 0), (50, 25), "red")
-                self._draw_button((1280-50, 720-25), (50, 25), "green")
+                self._draw_button((0, 0), (50, 25), "green")
+                self._draw_button((1280-50, 0), (50, 25), "red")
                 mouse_clicked = pg.mouse.get_pressed()
                 left_clicked = mouse_clicked[0]
 
-                if left_clicked and self._button_hover(mouse_pos, (1280-50, 720-25), (50, 25)):
+                if left_clicked and self._button_hover(mouse_pos, (1280-50, 0), (50, 25)):
                     # Clear screen
                     # go back to gui
                     self.colony.wipe_colony()
