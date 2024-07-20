@@ -2,6 +2,7 @@ import pygame as pg
 import logging as log
 import utils
 import colony
+import button
 
 
 logger = log.getLogger(__name__)
@@ -34,25 +35,14 @@ class Game:
         button = pg.Rect(left_corner, dimensions)
         pg.draw.rect(self.screen, color, button)
 
-    def _button_hover(self, mouse_pos: tuple, button_pos: tuple, button_dimensions: tuple) -> bool:
-        button_height = button_dimensions[1]
-        button_width = button_dimensions[0]
-
-        mouse_x = mouse_pos[0]
-        mouse_y = mouse_pos[1]
-
-        in_width = mouse_x > button_pos[0] and mouse_x < button_pos[0] + button_width
-        in_height = mouse_y > button_pos[1] and mouse_y < button_pos[1] + button_height
-
-        return in_width and in_height
-
-
-
 
     def main(self) -> None:
         in_gui = True
         in_game = False
 
+        start_button = button.Button((0,0), (50, 25), "green")
+        restart_button = button.Button((1280-50, 0), (50, 25), "red")
+        
         self.screen.fill("purple")
 
         while self.running:
@@ -62,8 +52,9 @@ class Game:
 
             if in_gui:
                 self.draw_colony()
-                self._draw_button((0, 0), (50, 25), "green")
-                self._draw_button((1280-50, 0), (50, 25), "red")
+                start_button.draw_button(self.screen)
+                restart_button.draw_button(self.screen)
+
                 mouse_pos = pg.mouse.get_pos()
                 mouse_row = int(mouse_pos[0]/16)
                 mouse_column = int(mouse_pos[1]/16)
@@ -72,7 +63,7 @@ class Game:
                 mouse_clicked = pg.mouse.get_pressed()
                 left_clicked = mouse_clicked[0]
 
-                if left_clicked and self._button_hover(mouse_pos, (0, 0), (50, 25)):
+                if start_button.handle_cursor(mouse_pos):
                     in_gui = False
                     in_game = True
                     self.selected_cell.kill_cell()  
@@ -85,16 +76,14 @@ class Game:
 
 
             elif in_game:
-                mouse_pos = pg.mouse.get_pos()
                 self.draw_colony()
-                self._draw_button((0, 0), (50, 25), "green")
-                self._draw_button((1280-50, 0), (50, 25), "red")
-                mouse_clicked = pg.mouse.get_pressed()
-                left_clicked = mouse_clicked[0]
+                start_button.draw_button(self.screen)
+                restart_button.draw_button(self.screen)
 
-                if left_clicked and self._button_hover(mouse_pos, (1280-50, 0), (50, 25)):
-                    # Clear screen
-                    # go back to gui
+                mouse_pos = pg.mouse.get_pos()
+                mouse_clicked = pg.mouse.get_pressed()
+
+                if restart_button.handle_cursor(mouse_pos):
                     self.colony.wipe_colony()
                     in_gui = True
                     in_game = False
@@ -111,5 +100,5 @@ class Game:
         pg.quit()
 
 
-game_of_life = Game((1280, 720), 10)
+game_of_life = Game((1280, 720), 30)
 game_of_life.main()
