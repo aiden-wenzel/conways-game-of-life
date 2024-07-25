@@ -1,19 +1,16 @@
+"""The main driver file of this program."""
+
 import pygame as pg
-import logging as log
-import utils
 import colony
 import button
 
-
-logger = log.getLogger(__name__)
-logger.setLevel(log.DEBUG)
 
 class Game:
     def __init__(self, resolution: tuple, frame_rate: int) -> None:
         pg.init()
         self.screen = pg.display.set_mode(resolution)
         self.clock = pg.time.Clock()
-        self.running = True 
+        self.running = True
         self.frame_rate = frame_rate
         self.colony = colony.Colony(resolution[0], resolution[1])
         self.selected_cell = None
@@ -28,12 +25,17 @@ class Game:
                     color = "grey"
                 else:
                     color = "white"
-                
-                pg.draw.rect(self.screen, color, pg.Rect(self.colony.get_cell(row, column).calculate_screen_coordinates(), (16, 16)))
+
+                pg.draw.rect(
+                        self.screen,
+                        color,
+                        pg.Rect(self.colony.get_cell(row, column).calculate_screen_coordinates(),
+                        (16, 16))
+                )
 
     def _draw_button(self, left_corner: tuple, dimensions: tuple, color: str) -> None:
-        button = pg.Rect(left_corner, dimensions)
-        pg.draw.rect(self.screen, color, button)
+        button_to_draw = pg.Rect(left_corner, dimensions)
+        pg.draw.rect(self.screen, color, button_to_draw)
 
 
     def main(self) -> None:
@@ -42,7 +44,7 @@ class Game:
 
         start_button = button.Button((0,0), (50, 25), "green")
         restart_button = button.Button((1280-50, 0), (50, 25), "red")
-        
+
         self.screen.fill("purple")
 
         while self.running:
@@ -66,13 +68,12 @@ class Game:
                 if start_button.handle_cursor(mouse_pos):
                     in_gui = False
                     in_game = True
-                    self.selected_cell.kill_cell()  
+                    self.selected_cell.kill_cell()
 
                 if left_clicked:
                     self.selected_cell.resurect_cell()
 
                 pg.display.flip()
-                
 
 
             elif in_game:
@@ -89,12 +90,11 @@ class Game:
                     in_game = False
 
 
-                pg.display.flip() 
+                pg.display.flip()
 
                 self.colony.bit_map_determine_fate()
-                self.colony.kill_and_resurect_cells()        
+                self.colony.kill_and_resurect_cells()
 
-       
 
             self.clock.tick(self.frame_rate)
         pg.quit()

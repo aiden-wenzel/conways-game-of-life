@@ -1,4 +1,9 @@
+"""Module which provides the Cell class."""
+
 class Cell:
+    """
+    The most fundumental data structure for this game.
+    """
     def __init__(self, row_in: int, column_in: int):
         """Initialize the cell as dead, at row_in and column_in,
         and initialize the screen coordinates of the cell"""

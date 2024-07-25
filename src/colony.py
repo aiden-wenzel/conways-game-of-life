@@ -1,8 +1,13 @@
-import cell
+"""Module which provides the Colony class."""
+
 import numpy as np
+import cell
 
 
 class Colony:
+    """
+    This class is where the logic and bit map of cells are stored.
+    """
     def __init__(self, screen_width: int, screen_height: int):
         self.rows = self.__calculate_rows(screen_height)
         self.columns = self.__calculate_columns(screen_width)
