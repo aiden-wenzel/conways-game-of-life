@@ -2,7 +2,6 @@
 This module contains the plotter class which will be used to track 
 and plot the population of cells over the course of the game.
 """
-
 import matplotlib.pyplot as plt
 import numpy as np
 import colony
@@ -40,11 +39,12 @@ class Plotter:
         """
 
         tick_cell_count = self.count_alive_cells(colony_in)
-        np.append(self.cell_array, tick_cell_count)
+        self.cell_array = np.append(self.cell_array, tick_cell_count)
 
-    def display_plot(self) -> None:
+    def save_plot(self) -> None:
         """
         Display a plot of the number of alive cells vs tick.
         """
 
         plt.plot(self.cell_array)
+        plt.savefig("../plot.png")

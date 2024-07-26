@@ -2,6 +2,7 @@
 
 import pygame as pg
 import colony
+import plotter
 import button
 
 
@@ -14,6 +15,7 @@ class Game:
         self.frame_rate = frame_rate
         self.colony = colony.Colony(resolution[0], resolution[1])
         self.selected_cell = None
+        self.plot = plotter.Plotter()
 
     def draw_colony(self) -> None:
         for row in range(self.colony.rows):
@@ -92,12 +94,14 @@ class Game:
 
                 pg.display.flip()
 
+                self.plot.update_cell_count_list(self.colony)
                 self.colony.bit_map_determine_fate()
                 self.colony.kill_and_resurect_cells()
 
 
             self.clock.tick(self.frame_rate)
         pg.quit()
+        self.plot.save_plot()
 
 
 game_of_life = Game((1280, 720), 30)
