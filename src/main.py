@@ -50,20 +50,27 @@ class Game:
         self.screen.fill("purple")
 
         while self.running:
+
+            # Exit the loop if the the player quits.
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     self.running = False
 
+            # Entry point to select cells
             if in_gui:
+
+                # Render buttons.
                 self.draw_colony()
                 start_button.draw_button(self.screen)
                 restart_button.draw_button(self.screen)
 
+                # Determine the cell under the cursor.
                 mouse_pos = pg.mouse.get_pos()
                 mouse_row = int(mouse_pos[0]/16)
                 mouse_column = int(mouse_pos[1]/16)
                 self.selected_cell = self.colony.get_cell(mouse_column, mouse_row)
 
+                # Determine if left mouse button is clicked.
                 mouse_clicked = pg.mouse.get_pressed()
                 left_clicked = mouse_clicked[0]
 
