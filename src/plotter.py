@@ -47,4 +47,10 @@ class Plotter:
         """
 
         plt.plot(self.cell_array)
+
+        plt.xlabel("Time [Ticks]")
+        plt.ylabel("Cell Count")
+        plt.title("Cell Count Vs. Time")
+        plt.grid()
+
         plt.savefig("../plot.png")
