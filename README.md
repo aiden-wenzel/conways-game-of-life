@@ -24,4 +24,10 @@ Additionally, check out the list of cool example videos below.
 * [Life in Life](https://www.youtube.com/watch?v=xP5-iIeKXE8)
 * [Fractals in Conway's Game of Life](https://www.youtube.com/watch?v=I6GZ_ZtYBKE)
 
-# 2. Features
+# 2. How to Play
+
+## 2.1 Installation
+1. Ensure that Python is installed on your system. On 
+1. Clone this Git repository or download the source code as a zip file and extract.
+2. Navigate to the directory you downloaded the source code.
+
