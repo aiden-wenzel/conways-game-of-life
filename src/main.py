@@ -9,6 +9,7 @@ import button
 class Game:
     def __init__(self, resolution: tuple, frame_rate: int) -> None:
         pg.init()
+        pg.display.set_caption("Conway's Game of Life")
         self.screen = pg.display.set_mode(resolution)
         self.clock = pg.time.Clock()
         self.running = True
