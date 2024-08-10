@@ -35,3 +35,7 @@ Additionally, check out the list of cool example videos below.
 ## 2.2 Starting the Game
 1. In the root directory of the project, type `cd src` to move into the source code directory.
 2. Once in the source code directory, run the game by typing `python main.py`. This should bring up the starting screen of the game.
+
+## 2.3 The Drawing Screen
+When the game first starts up, you will load into the drawing screen. The drawing screen is where you can customize the starting state of the game.
+![Starting Screen](assets/starting-screen.png)
