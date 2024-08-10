@@ -38,4 +38,4 @@ Additionally, check out the list of cool example videos below.
 
 ## 2.3 The Drawing Screen
 When the game first starts up, you will load into the drawing screen. The drawing screen is where you can customize the starting state of the game.
-![Starting Screen](assets/starting-screen.png)
+![Starting Screen](assets/loading-screen.png)
