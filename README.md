@@ -27,7 +27,11 @@ Additionally, check out the list of cool example videos below.
 # 2. How to Play
 
 ## 2.1 Installation
-1. Ensure that Python is installed on your system. On 
-1. Clone this Git repository or download the source code as a zip file and extract.
-2. Navigate to the directory you downloaded the source code.
+1. Ensure that Python is installed on your system.
+2. Clone this Git repository or download the source code as a zip file and extract.
+3. Navigate to the directory you downloaded the source code.
+4. Once in the root directory, install packages with the `pip` package manager. This can be done with `python -m pip install -r requirements.txt`.
 
+## 2.2 Starting the Game
+1. In the root directory of the project, type `cd src` to move into the source code directory.
+2. Once in the source code directory, run the game by typing `python main.py`. This should bring up the starting screen of the game.
