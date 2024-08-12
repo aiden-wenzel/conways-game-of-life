@@ -39,3 +39,11 @@ Additionally, check out the list of cool example videos below.
 ## 2.3 The Drawing Screen
 When the game first starts up, you will load into the drawing screen. The drawing screen is where you can customize the starting state of the game.
 ![Starting Screen](assets/loading-screen.png)
+
+## 2.4 Starting the Game
+Once you are ready to start the game, hit the green button. After you press the button, the game board will begin to change.
+Press the red button once you are ready to end the game, this will reset the board where you will be taken back to the drawing screen.
+
+## 2.5 Viewing the Population Graph
+In the root directory, open `plot.png` to view the population graph for the previous game after you hit the red button. See the example below.
+![Population Graph](assets/graph.png)
